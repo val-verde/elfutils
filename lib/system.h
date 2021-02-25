@@ -30,7 +30,13 @@
 #define LIB_SYSTEM_H	1
 
 #include <errno.h>
+
+#if __has_include(<error.h>)
 #include <error.h>
+#else
+#define error(...)
+#define error_message_count 0
+#endif
 #include <stddef.h>
 #include <stdint.h>
 #include <sys/param.h>
