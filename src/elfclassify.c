@@ -19,7 +19,11 @@
 #include <system.h>
 
 #include <argp.h>
+#if __has_include(<error.h>)
 #include <error.h>
+#else
+#define error(...)
+#endif
 #include <fcntl.h>
 #include <gelf.h>
 #include <stdbool.h>

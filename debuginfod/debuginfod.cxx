@@ -46,7 +46,11 @@ extern "C" {
 
 #include <unistd.h>
 #include <stdlib.h>
+#if __has_include(<error.h>)
 #include <error.h>
+#else
+#define error(...)
+#endif
 #include <libintl.h>
 #include <locale.h>
 #include <pthread.h>
