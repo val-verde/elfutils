@@ -59,6 +59,10 @@
 # error "Unknown byte order"
 #endif
 
+#if !defined(FNM_EXTMATCH)
+#define FNM_EXTMATCH 0
+#endif
+
 #ifndef MAX
 #define MAX(m, n) ((m) < (n) ? (n) : (m))
 #endif
