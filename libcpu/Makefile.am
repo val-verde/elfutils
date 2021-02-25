@@ -60,6 +60,7 @@ if MAINTAINER_MODE
 noinst_HEADERS += memory-access.h i386_parse.h i386_data.h
 
 noinst_PROGRAMS = i386_gendis$(EXEEXT)
+I386_GENDIR_ROOT ?= .
 
 # i386_gendis doesn't clean up, ignore leaks.
 # It is just a build tool to generate source in maintainer mode.
@@ -70,7 +71,7 @@ GENDIS_ENV=
 endif
 
 $(srcdir)/%_dis.h: %_defs i386_gendis$(EXEEXT)
-	$(AM_V_GEN) $(GENDIS_ENV) ./i386_gendis$(EXEEXT) $< > $@T
+	$(AM_V_GEN) $(GENDIS_ENV) ${I386_GENDIR_ROOT}/i386_gendis$(EXEEXT) $< > $@T
 	$(AM_V_at)mv -f $@T $@
 
 else
