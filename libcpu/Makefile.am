@@ -60,9 +60,10 @@ if MAINTAINER_MODE
 noinst_HEADERS += memory-access.h i386_parse.h i386_data.h
 
 noinst_PROGRAMS = i386_gendis$(EXEEXT)
+I386_GENDIR_ROOT ?= .
 
 $(srcdir)/%_dis.h: %_defs i386_gendis$(EXEEXT)
-	$(AM_V_GEN)./i386_gendis$(EXEEXT) $< > $@T
+	$(AM_V_GEN)${I386_GENDIR_ROOT}/i386_gendis$(EXEEXT) $< > $@T
 	$(AM_V_at)mv -f $@T $@
 
 else
