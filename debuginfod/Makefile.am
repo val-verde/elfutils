@@ -42,7 +42,7 @@ program_transform_name = s,x,x,
 
 if BUILD_STATIC
 libasm = ../libasm/libasm.a
-libdw = ../libdw/libdw.a -lz $(zip_LIBS) $(libelf) $(libebl) -ldl -lpthread
+libdw = ../libdw/libdw.a -lz $(zip_LIBS) $(libelf) $(libebl) -ldl
 libelf = ../libelf/libelf.a -lz
 if DUMMY_LIBDEBUGINFOD
 libdebuginfod = ./libdebuginfod.a
@@ -70,8 +70,8 @@ bin_PROGRAMS += debuginfod-find
 endif
 
 debuginfod_SOURCES = debuginfod.cxx
-debuginfod_LDADD = $(libdw) $(libelf) $(libeu) $(libdebuginfod) $(argp_LDADD) $(fts_LIBS) $(libmicrohttpd_LIBS) $(sqlite3_LIBS) $(libarchive_LIBS) -lpthread -ldl
-
+debuginfod_LDADD = $(libdw) $(libelf) $(libeu) $(libdebuginfod) $(argp_LDADD) $(fts_LIBS) $(libmicrohttpd_LIBS) $(sqlite3_LIBS) $(libarchive_LIBS) -ldl
+debuginfod_LDFLAGS = -pthread
 debuginfod_find_SOURCES = debuginfod-find.c
 debuginfod_find_LDADD = $(libdw) $(libelf) $(libeu) $(libdebuginfod) $(argp_LDADD) $(fts_LIBS)
 
