@@ -31,6 +31,10 @@
 
 #include <errno.h>
 
+#ifdef __ANDROID__
+static const char *program_invocation_short_name = "(null)";
+#endif
+
 #if __has_include(<error.h>)
 #include <error.h>
 #else
