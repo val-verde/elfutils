@@ -3403,7 +3403,11 @@ scan_source_paths()
             }
           else
             {
+            #ifdef __ANDROID__
+              scanq.push_back (make_pair(rps, *(struct stat *)f->fts_statp));
+            #else
               scanq.push_back (make_pair(rps, *f->fts_statp));
+            #endif
               inc_metric("traversed_total","type","file");
             }
         }
