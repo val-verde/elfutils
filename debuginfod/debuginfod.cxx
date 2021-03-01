@@ -58,6 +58,9 @@ extern "C" {
 #include <fcntl.h>
 #include <netdb.h>
 
+#ifdef __ANDROID__
+#include <netinet/in.h>
+#endif
 
 /* If fts.h is included before config.h, its indirect inclusions may not
    give us the right LFS aliases of these functions, so map them manually.  */
