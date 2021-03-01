@@ -31,7 +31,6 @@
 #define LIB_SYSTEM_H	1
 
 #include <config.h>
-
 #include <errno.h>
 #include <stddef.h>
 #include <stdint.h>
@@ -42,6 +41,10 @@
 #include <string.h>
 #include <stdarg.h>
 #include <stdlib.h>
+
+#ifdef __ANDROID__
+static const char *program_invocation_short_name = "(null)";
+#endif
 
 #if defined(HAVE_ERROR_H)
 #include <error.h>
