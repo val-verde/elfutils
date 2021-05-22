@@ -8763,12 +8763,12 @@ print_debug_line_section (Dwfl_Module *dwflmod, Ebl *ebl, GElf_Ehdr *ehdr,
       /* Apply the "operation advance" from a special opcode
 	 or DW_LNS_advance_pc (as per DWARF4 6.2.5.1).  */
       unsigned int op_addr_advance;
-      inline void advance_pc (unsigned int op_advance)
-      {
-	op_addr_advance = minimum_instr_len * ((op_index + op_advance)
-					       / max_ops_per_instr);
-	address += op_addr_advance;
-	op_index = (op_index + op_advance) % max_ops_per_instr;
+      #define advance_pc(op_advance) \
+      { \
+	op_addr_advance = minimum_instr_len * ((op_index + op_advance) \
+					       / max_ops_per_instr); \
+	address += op_addr_advance; \
+	op_index = (op_index + op_advance) % max_ops_per_instr; \
       }
 
       if (max_ops_per_instr == 0)
